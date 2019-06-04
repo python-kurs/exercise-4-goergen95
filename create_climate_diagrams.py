@@ -23,14 +23,14 @@ zugspitze_agg = list(zugspitze.loc[:," TMK"].resample("1M").agg(["mean"])["mean"
 # Add the arguments as mentioned in the docstring below [1P]
 # Set the default temperature range from -15°C to 20°C and the precipitation range from 0mm to 370mm [1P]
 def create_climate_diagram(df,
-                           temp_col,
-                           prec_col,
-                           title,
-                           filename,
-                           temp_min=-15,
-                           temp_max=20,
-                           prec_min=0,
-                           prec_max=370):
+                           temp_col:str,
+                           prec_col:str,
+                           title:str,
+                           filename:str,
+                           temp_min:int=-15,
+                           temp_max:int=20,
+                           prec_min:int=0,
+                           prec_max:int=370):
     """
     Draw a climate diagram.
     
@@ -70,7 +70,7 @@ def create_climate_diagram(df,
     # Draw temperature values as a red line and precipitation values as blue bars: [1P]
     # Hint: Check out the matplotlib documentation how to plot barcharts. Try to directly set the correct
     #       x-axis labels (month shortnames).
-    days = mdates.DayLocator(bymonthday=1)
+    days = mdates.DayLocator(bymonthday=28)
     monthFmt = mdates.DateFormatter("%b")
     ax1.xaxis.set_major_locator(days)
     ax1.xaxis.set_major_formatter(monthFmt)
